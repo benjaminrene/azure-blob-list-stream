@@ -13,6 +13,6 @@ test(function (t) {
 
   ListStream(blob, 'public')
     .on('data', entries.push.bind(entries))
-    .on('end', t.ok(entries.length > 10 * 1000))
+    .on('end', () => t.ok(entries.length > 10 * 1000))
     .on('error', t.end)
 })
