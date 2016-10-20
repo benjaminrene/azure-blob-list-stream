@@ -1,7 +1,7 @@
 {
   "name": "azure-blob-list-stream",
   "main": "index.js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Stream a list of all files from an Azure Blob Storage collection",
   "license": "MIT",
   "repository": "bendrucker/azure-blob-list-stream",
