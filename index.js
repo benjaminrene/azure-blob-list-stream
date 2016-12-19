@@ -33,11 +33,9 @@ ListStream.prototype = Object.create(Readable.prototype)
 ListStream.prototype._read = function _read () {
   if (this.loading) return
 
-  if (this.token === null) {
-    return this.push(null)
-  }
-
   if (this.empty()) {
+    if (this.token === null) return this.push(null)
+
     return this.page((err, page) => {
       if (err) return this.emit('error', err)
       this.emit('page', page)
