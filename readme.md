@@ -20,6 +20,8 @@ ListStream(blob, 'my-container')
   .on('data', (blob) => console.log(blob.name))
 ```
 
+The stream respects backpressure and will only read in new pages from Azure when its internal buffer is empty.
+
 ## API
 
 #### `ListStream(blob, container)` -> `Readable`
@@ -40,6 +42,15 @@ Type: `string`
 
 The name of the storage container to list.
 
+#### `stream.on('page', handler)`
+
+Listens on the `page` event which is emitted each time a new page of results arrives.
+
+##### handler
+
+*Required*  
+Type: `function`  
+Arguments: `{token, count}`
 
 ## License
 

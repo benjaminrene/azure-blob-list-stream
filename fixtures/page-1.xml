@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnumerationResults ServiceEndpoint="https://hello.blob.core.windows.net/" ContainerName="public">
+  <Blobs>
+    <Blob>
+      <Name>file.pdf</Name>
+      <Properties>
+        <Last-Modified>Fri, 31 Jul 2015 02:00:28 GMT</Last-Modified>
+        <Etag>0x8D2994BCECF6A94</Etag>
+        <Content-Length>10384</Content-Length>
+        <Content-Type>application/pdf</Content-Type>
+        <Content-Encoding />
+        <Content-Language />
+        <Content-MD5>wGOK1sTL1B+jwRxb4R91HA==</Content-MD5>
+        <Cache-Control />
+        <Content-Disposition>attachment; filename=file.pdf</Content-Disposition>
+        <BlobType>BlockBlob</BlobType>
+        <LeaseStatus>unlocked</LeaseStatus>
+        <LeaseState>available</LeaseState>
+        <ServerEncrypted>false</ServerEncrypted>
+      </Properties>
+    </Blob>
+  </Blobs>
+  <NextMarker>2!144!MDAwMDY0ITU2NjJmZjAyLWIwMzgtNDhlYy05ZWNhLTllZGZkNjE1NDU5ZV9SZWNvbW1lbmRhdGlvbi0xNDQ4NzA5MS5wZGYhMDAwMDI4ITk5OTktMTItMzFUMjM6NTk6NTkuOTk5OTk5OVoh</NextMarker>
+</EnumerationResults>

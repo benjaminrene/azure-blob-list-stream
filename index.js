@@ -24,19 +24,44 @@ function ListStream (blob, container) {
 ListStream.prototype = Object.create(Readable.prototype)
 
 ListStream.prototype._read = function _read () {
-  if (this.queue.length) {
-    return this.push(this.queue.shift())
-  }
+  if (this.loading) return
 
   if (this.token === null) {
     return this.push(null)
   }
 
-  this.blob.listBlobsSegmented(this.container, this.token, (err, result) => {
-    if (err) return this.emit('error', err)
-    this.token = result.continuationToken
-    this.queue = result.entries
+  if (this.empty()) {
+    return this.page((err, page) => {
+      if (err) return this.emit('error', err)
+      this.emit('page', page)
+      this.push(this.shift())
+    })
+  }
 
-    this._read()
+  this.push(this.shift())
+}
+
+ListStream.prototype.page = function page (callback) {
+  this.loading = true
+
+  this.blob.listBlobsSegmented(this.container, this.token, (err, result) => {
+    if (err) return callback(err)
+
+    this.queue = result.entries
+    this.token = result.continuationToken
+    this.loading = false
+
+    callback(null, {
+      token: this.token,
+      count: result.entries.length
+    })
   })
+}
+
+ListStream.prototype.shift = function shfit () {
+  return this.queue.shift()
+}
+
+ListStream.prototype.empty = function empty () {
+  return !this.queue.length
 }
