@@ -24,7 +24,7 @@ The stream respects backpressure and will only read in new pages from Azure when
 
 ## API
 
-#### `ListStream(blob, container)` -> `Readable`
+#### `ListStream(blob, container, token)` -> `Readable`
 
 Returns a readable stream that emits each Blob Storage file entry.
 
@@ -41,6 +41,13 @@ An Azure Blob Storage interface that you construct.
 Type: `string`
 
 The name of the storage container to list.
+
+##### token
+
+Type: `string`  
+Default: `undefined`
+
+A page token at which to start the list operation. 
 
 #### `stream.on('page', handler)`
 

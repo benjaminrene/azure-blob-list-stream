@@ -5,9 +5,9 @@ const Readable = require('stream').Readable
 
 module.exports = ListStream
 
-function ListStream (blob, container) {
+function ListStream (blob, container, token) {
   if (!(this instanceof ListStream)) {
-    return new ListStream(blob, container)
+    return new ListStream(blob, container, token)
   }
 
   assert(blob, 'azure blob service is required')
@@ -15,6 +15,13 @@ function ListStream (blob, container) {
 
   this.blob = blob
   this.container = container
+
+  if (token) {
+    this.token = {
+      nextMarker: token,
+      targetLocation: 0
+    }
+  }
 
   this.queue = []
 
