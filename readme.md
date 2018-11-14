@@ -1,4 +1,4 @@
-# azure-blob-list-stream [![Build Status](https://travis-ci.org/bendrucker/azure-blob-list-stream.svg?branch=master)](https://travis-ci.org/bendrucker/azure-blob-list-stream)
+# azure-blob-list-stream [![Build Status](https://travis-ci.org/bendrucker/azure-blob-list-stream.svg?branch=master)](https://travis-ci.org/bendrucker/azure-blob-list-stream) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/azure-blob-list-stream.svg)](https://greenkeeper.io/)
 
 > Stream a list of all files from an Azure Blob Storage collection
 

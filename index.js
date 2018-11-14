@@ -25,7 +25,7 @@ function ListStream (blob, container, token) {
 
   this.queue = []
 
-  Readable.call(this, {objectMode: true})
+  Readable.call(this, { objectMode: true })
 }
 
 ListStream.prototype = Object.create(Readable.prototype)
