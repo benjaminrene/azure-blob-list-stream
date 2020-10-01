@@ -5,7 +5,7 @@ const Readable = require('stream').Readable
 
 module.exports = ListStream
 
-function ListStream (blob, container, token) {
+function ListStream (blob, container, prefix, token) {
   if (!(this instanceof ListStream)) {
     return new ListStream(blob, container, token)
   }
@@ -15,6 +15,7 @@ function ListStream (blob, container, token) {
 
   this.blob = blob
   this.container = container
+  this.prefix = prefix
 
   if (token) {
     this.token = {
@@ -49,7 +50,7 @@ ListStream.prototype._read = function _read () {
 ListStream.prototype.page = function page (callback) {
   this.loading = true
 
-  this.blob.listBlobsSegmented(this.container, this.token, (err, result) => {
+  this.blob.listBlobsSegmentedWithPrefix(this.container, this.prefix, this.token, (err, result) => {
     if (err) return callback(err)
 
     this.queue = result.entries
