@@ -7,7 +7,7 @@ module.exports = ListStream
 
 function ListStream (blob, container, prefix, token) {
   if (!(this instanceof ListStream)) {
-    return new ListStream(blob, container, token)
+    return new ListStream(blob, container, prefix, token)
   }
 
   assert(blob, 'azure blob service is required')
